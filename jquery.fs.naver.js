@@ -1,7 +1,7 @@
 /*
  * Naver Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.0.1
+ * @version 0.0.2
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -21,7 +21,7 @@
 		
 		// Activate
 		activate: function() {
-			$(this).each(function() {
+			return $(this).each(function() {
 				$(this).addClass("active")
 					   .trigger("close.naver");
 			});
@@ -29,9 +29,25 @@
 		
 		// Deactivate
 		deactivate: function() {
-			$(this).each(function() {
+			return $(this).each(function() {
 				$(this).removeClass("active")
 					   .trigger("close.naver");
+			});
+		},
+		
+		// Destroy
+		destroy: function() {
+			return $(this).each(function() {
+				var data = $(this).data("naver");
+				
+				data.$handle.remove();
+				data.$container.contents()
+							   .unwrap()
+							   .unwrap();
+				
+				data.$nav.removeClass("active")
+						 .off(".naver")
+						 .removeData("naver");
 			});
 		}
 	};
@@ -50,6 +66,9 @@
 			var $nav = $(this);
 			
 			if (!$nav.data("naver")) {
+				settings.labelClosed = $nav.data("label-closed") || settings.labelClosed;
+				settings.labelOpen = $nav.data("label-open") || settings.labelOpen;
+				
 				if (settings.animated) {
 					$nav.addClass("animated");
 				}
@@ -81,7 +100,8 @@
 		var $target = $(e.currentTarget),
 			data = e.data;
 		
-		$(".naver").not(data.$nav).trigger("close.naver");
+		$(".naver").not(data.$nav)
+				   .trigger("close.naver");
 		
 		if (data.$nav.hasClass("open")) {
 			data.$nav.trigger("close.naver");
