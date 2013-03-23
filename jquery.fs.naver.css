@@ -1,20 +1,22 @@
 /*
  * Naver Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.0.2
+ * @version 0.0.4
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
  */
  
- 	.naver .naver-handle { color: #333; cursor: pointer; display: none; font-size: 14px; text-transform: uppercase; 
+ 	.naver .naver-handle { color: #333; cursor: pointer; display: none; font-size: 14px; height: 30px; line-height: 28px; text-transform: uppercase; 
 	 	-webkit-user-select: none;
 		   -moz-user-select: none;
 		    -ms-user-select: none;
 		     -o-user-select: none;
 			    user-select: none;
  	}
+ 	.naver .naver-handle:before { background: url(fs-naver-icon.png) no-repeat center; content: ''; display: block; float: left; height: 15px; margin: 7px 10px 0 0; width: 20px; }
  	.naver .naver-wrapper { height: auto; }
+ 	.naver .naver-container:after { clear: both; content: "."; display: block; height: 0; line-height: 0; visibility: hidden; }
  	
  	@media screen and (min-width: 741px) {
  		.naver .naver-wrapper { height: auto !important; }
@@ -22,8 +24,8 @@
  	
 	@media screen and (max-width: 740px) {
 		/* Mobile Only */
-		.naver .naver-handle { display: block; }
-		.naver .naver-wrapper { height: 0px; overflow: hidden; }
+		.naver.active .naver-handle { display: block; }
+		.naver.active .naver-wrapper { height: 0px; overflow: hidden; }
 		
 		/* Animated - Experimental! Performs poorly on mobile */
 		.naver.animated .naver-wrapper {

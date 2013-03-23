@@ -1,17 +1,18 @@
 /*
  * Naver Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.0.2
+ * @version 0.0.4
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
  */
  
-(function($) {
+if (jQuery) (function($) {
 	
 	// Default Options
 	var options = {
 		animated: false,
+		label: true,
 		labelClosed: "Navigation",
 		labelOpen: "Close"
 	};
@@ -75,7 +76,7 @@
 				
 				$nav.wrapInner('<div class="naver-container" />')
 					.wrapInner('<div class="naver-wrapper" />')
-					.prepend('<span class="naver-handle">' + settings.labelClosed + '</span>');
+					.prepend('<span class="naver-handle">' + ((settings.label) ? settings.labelClosed : '') + '</span>');
 				
 				var data = $.extend({
 						$nav: $nav,
@@ -88,6 +89,8 @@
 						 .on("open.naver", data, _open)
 						 .on("close.naver", data, _close)
 						 .data("naver", data);
+				
+				pub.activate.apply(data.$nav);
 			}
 		});
 	}
@@ -115,7 +118,9 @@
 		var data = e.data;
 		data.$wrapper.css({ height: data.$container.outerHeight(true) });
 		data.$nav.addClass("open");
-		data.$handle.html(data.labelOpen);
+		if (data.label) {
+			data.$handle.html(data.labelOpen);
+		}
 	}
 	
 	// Close Nav
@@ -123,7 +128,10 @@
 		var data = e.data;
 		data.$wrapper.css({ height: 0 });
 		data.$nav.removeClass("open");
-		data.$handle.html(data.labelClosed);
+		console.log("close");
+		if (data.label) {
+			data.$handle.html(data.labelClosed);
+		}
 	}
 	
 	
