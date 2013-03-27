@@ -1,7 +1,7 @@
 /*
  * Naver Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.0.4
+ * @version 0.0.5
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -128,7 +128,6 @@ if (jQuery) (function($) {
 		var data = e.data;
 		data.$wrapper.css({ height: 0 });
 		data.$nav.removeClass("open");
-		console.log("close");
 		if (data.label) {
 			data.$handle.html(data.labelClosed);
 		}
