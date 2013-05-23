@@ -1,7 +1,7 @@
 /*
  * Naver Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.0.5
+ * @version 0.0.6
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -57,42 +57,47 @@ if (jQuery) (function($) {
 	
 	// Initialize
 	function _init(opts) {
-		var opts = opts || {};
-		
-		// Define settings
-		var settings = $.extend({}, options, opts);
+		// Settings
+		opts = $.extend({}, options, opts);
 		
 		// Apply to each element
-		return $(this).each(function(i) {
-			var $nav = $(this);
+		var $items = $(this);
+		for (var i = 0, count = $items.length; i < count; i++) {
+			_build($items.eq(i), opts);
+		}
+		return $items;
+	}
+	
+	function _build($nav, opts) {
+		if (!$nav.data("naver")) {
+			// EXTEND OPTIONS
+			$.extend(opts, $nav.data("naver-options"));
 			
-			if (!$nav.data("naver")) {
-				settings.labelClosed = $nav.data("label-closed") || settings.labelClosed;
-				settings.labelOpen = $nav.data("label-open") || settings.labelOpen;
-				
-				if (settings.animated) {
-					$nav.addClass("animated");
-				}
-				
-				$nav.wrapInner('<div class="naver-container" />')
-					.wrapInner('<div class="naver-wrapper" />')
-					.prepend('<span class="naver-handle">' + ((settings.label) ? settings.labelClosed : '') + '</span>');
-				
-				var data = $.extend({
-						$nav: $nav,
-						$container: $nav.find(".naver-container"),
-						$wrapper: $nav.find(".naver-wrapper"),
-						$handle: $nav.find(".naver-handle")
-					}, settings);
-				
-				data.$nav.on("click.naver", ".naver-handle", data, _onClick)
-						 .on("open.naver", data, _open)
-						 .on("close.naver", data, _close)
-						 .data("naver", data);
-				
-				pub.activate.apply(data.$nav);
+			opts.labelClosed = $nav.data("label-closed") || opts.labelClosed;
+			opts.labelOpen = $nav.data("label-open") || opts.labelOpen;
+			
+			if (opts.animated) {
+				$nav.addClass("animated");
 			}
-		});
+			
+			$nav.wrapInner('<div class="naver-container" />')
+				.wrapInner('<div class="naver-wrapper" />')
+				.prepend('<span class="naver-handle">' + ((opts.label) ? opts.labelClosed : '') + '</span>');
+			
+			opts = $.extend({
+				$nav: $nav,
+				$container: $nav.find(".naver-container"),
+				$wrapper: $nav.find(".naver-wrapper"),
+				$handle: $nav.find(".naver-handle")
+			}, opts);
+			
+			opts.$nav.on("click.naver", ".naver-handle", opts, _onClick)
+					 .on("open.naver", opts, _open)
+					 .on("close.naver", opts, _close)
+					 .data("naver", opts);
+			
+			pub.activate.apply(opts.$nav);
+		}
 	}
 	
 	// Handle Click
