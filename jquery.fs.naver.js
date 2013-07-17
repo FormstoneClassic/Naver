@@ -1,7 +1,7 @@
 /*
  * Naver Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.0.6
+ * @version 0.0.7
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -80,7 +80,8 @@ if (jQuery) (function($) {
 				$nav.addClass("animated");
 			}
 			
-			$nav.wrapInner('<div class="naver-container" />')
+			$nav.addClass("naver")
+				.wrapInner('<div class="naver-container" />')
 				.wrapInner('<div class="naver-wrapper" />')
 				.prepend('<span class="naver-handle">' + ((opts.label) ? opts.labelClosed : '') + '</span>');
 			
