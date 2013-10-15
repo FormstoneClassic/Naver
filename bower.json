@@ -3,6 +3,8 @@
 	"version": "0.0.7",
 	"description": "A jQuery plugin for responsive navigation.",
 	"keywords": [
+		"javascript",
+		"jquery",
 		"responsive",
 		"mobile",
 		"navigation",
