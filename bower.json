@@ -1,0 +1,31 @@
+{
+	"name": "Naver",
+	"version": "0.0.7",
+	"description": "A jQuery plugin for responsive navigation.",
+	"keywords": [
+		"responsive",
+		"mobile",
+		"navigation",
+		"menu",
+		"ui",
+		"formstone",
+		"benplum"
+	],
+	"authors": [
+		"Ben Plum"
+	],
+	"license": "MIT",
+	"homepage": "http://www.benplum.com/formstone/naver/",
+	"main": [
+		"jquery.fs.naver.css",
+		"jquery.fs.naver.min.js",
+		"fs-naver-icon.png"
+	],
+	"ignore": [
+		"*.json"
+	],
+	"dependencies": {
+		"jquery": ">= 1.7.0"
+	},
+	"devDependencies": {}
+}
