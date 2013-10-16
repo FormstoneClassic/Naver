@@ -1,7 +1,7 @@
 /*
  * Naver Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.0.7
+ * @version 0.0.8
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -92,7 +92,7 @@ if (jQuery) (function($) {
 				$handle: $nav.find(".naver-handle")
 			}, opts);
 			
-			opts.$nav.on("click.naver", ".naver-handle", opts, _onClick)
+			opts.$nav.on("touchstart.naver mousedown.naver", ".naver-handle", opts, _onClick)
 					 .on("open.naver", opts, _open)
 					 .on("close.naver", opts, _close)
 					 .data("naver", opts);
