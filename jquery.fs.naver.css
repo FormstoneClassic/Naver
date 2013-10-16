@@ -1,7 +1,7 @@
 /*
  * Naver Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.0.8
+ * @version 0.0.9
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -18,11 +18,11 @@
  	.naver .naver-wrapper { height: auto; }
  	.naver .naver-container:after { clear: both; content: "."; display: block; height: 0; line-height: 0; visibility: hidden; }
  	
- 	@media screen and (min-width: 741px) {
+ 	@media screen and (min-width: 980px) {
  		.naver .naver-wrapper { height: auto !important; }
  	}
  	
-	@media screen and (max-width: 740px) {
+	@media screen and (max-width: 980px) {
 		/* Mobile Only */
 		.naver.active .naver-handle { display: block; }
 		.naver.active .naver-wrapper { height: 0px; overflow: hidden; }
