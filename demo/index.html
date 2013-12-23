@@ -43,12 +43,10 @@
 					animated: true
 				});
 				
-				$(window).on("resize", resetNaver);
+				$(window).on("resize", function(e) {
+					$(".naver.reset").trigger("close.naver");
+				});
 			});
-			
-			function resetNaver(e) {
-				$(".naver.reset").trigger("close.naver");
-			}
 		</script>
 	</head>
 	<body class="gridlock demo">
@@ -56,7 +54,6 @@
 			<div class="row">
 				<div class="mobile-full tablet-full desktop-8 desktop-push-2">
 					<h1>Naver Demo</h1>
-					<hr />
 					<p>A jQuery plugin for responsive navigation. <a href="http://www.benplum.com/formstone/naver/" class="no-pronto">Learn More.</a></p>
 				</div>
 			</div>
@@ -82,7 +79,7 @@
 				  <a href="#">Contact</a>
 				</nav>
 				
-				<hr />
+				<br />
 				
 				<!-- ANIMATED -->
 				<h2>Animated</h2>
@@ -99,7 +96,7 @@
 				  <a href="#">Contact</a>
 				</nav>
 				
-				<hr />
+				<br />
 				
 				<!-- RESET -->
 				<h2>Reset</h2>
