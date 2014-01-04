@@ -2,15 +2,15 @@
   "name": "Naver",
   "id": "naver",
   "codename": "jquery.fs.naver",
-  "version": "0.1.0",
+  "version": "3.0.0",
   "description": "A jQuery plugin for responsive navigation. Part of the Formstone Library.",
   "keywords": [ "responsive", "mobile", "navigation", "menu", "ui", "formstone", "benplum" ],
   "repository": {
     "type": "git",
     "url": "https://github.com/benplum/Naver"
   },
-  "homepage": "http://www.benplum.com/formstone/naver/",
-  "demo": "http://www.benplum.com/components/Naver/demo/index.html",
+  "homepage": "http://formstone.it/naver/",
+  "demo": "http://formstone.it/components/Naver/demo/index.html",
   "license": "MIT",
   "author": {
     "name": "Ben Plum",

@@ -1,6 +1,6 @@
 {
   "name": "Naver",
-  "version": "0.1.0",
+  "version": "3.0.0",
   "description": "A jQuery plugin for responsive navigation. Part of the Formstone Library.",
   "author": {
     "name": "Ben Plum",
@@ -8,5 +8,5 @@
     "url": "http://www.benplum.com"
   },
   "license": "MIT",
-  "homepage": "http://www.benplum.com/formstone/naver/"
+  "homepage": "http://formstone.it/naver/"
 }

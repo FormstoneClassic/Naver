@@ -1,7 +1,7 @@
 /* 
- * Naver v0.1.0 - 2014-01-04 
+ * Naver v3.0.0 - 2014-01-04 
  * A jQuery plugin for responsive navigation. Part of the Formstone Library. 
- * http://www.benplum.com/formstone/naver/ 
+ * http://formstone.it/naver/ 
  * 
  * Copyright 2014 Ben Plum; MIT Licensed 
  */ 
