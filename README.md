@@ -3,7 +3,7 @@
 
 A jQuery plugin for responsive navigation. Part of the Formstone Library. 
 
-- [Demo](undefined) 
+- [Demo](http://www.benplum.com/components/Naver/demo/index.html) 
 - [Documentation](http://www.benplum.com/formstone/naver/) 
 
 #### Bower Support 

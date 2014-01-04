@@ -10,6 +10,7 @@
     "url": "https://github.com/benplum/Naver"
   },
   "homepage": "http://www.benplum.com/formstone/naver/",
+  "demo": "http://www.benplum.com/components/Naver/demo/index.html",
   "license": "MIT",
   "author": {
     "name": "Ben Plum",
