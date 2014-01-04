@@ -3,7 +3,7 @@
 	<head>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    	
+		
 		<title>Naver Demo</title>
 		
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet" type="text/css" media="all" />
@@ -17,6 +17,16 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://www.benplum.com/js/demo.js"></script>
 		
+		<!--[if LTE IE 9]>
+			<script src="ie/html5.js"></script>
+		<![endif]-->
+		<!--[if IE 9]>
+			<script src="ie/matchMedia.ie9.js"></script>
+		<![endif]-->
+		<!--[if LTE IE 8]>
+			<script src="ie/matchMedia.ie8.js"></script>
+		<![endif]-->
+		
 		<link href="../jquery.fs.naver.css" rel="stylesheet" type="text/css" media="all" />
 		<script src="../jquery.fs.naver.js"></script>
 		
@@ -25,9 +35,7 @@
 			.naver a { background: #254960; color: #fff; display: block; float: left; font-size: 16px; line-height: 40px; margin: 0 1px 0 0; padding: 0 20px; }
 			.naver a:hover { background: #222; }
 			
-			@media screen and (max-width: 740px) {
-				.naver a { float: none; margin: 0 0 1px 0; width: 100%; }
-			}
+			.naver.enabled a { float: none; margin: 0 0 1px 0; width: 100%; }
 		</style>
 		
 		<script>
@@ -37,15 +45,7 @@
 					e.stopPropagation();
 				});	
 				
-				$(".naver.basic").naver();
-				
-				$(".naver.animated").naver({
-					animated: true
-				});
-				
-				$(window).on("resize", function(e) {
-					$(".naver.reset").trigger("close.naver");
-				});
+				$(".naver").naver();
 			});
 		</script>
 	</head>
@@ -63,20 +63,20 @@
 				
 				<!-- BASIC -->
 				<h2>Basic</h2>
-				<p>Naver will atuomatically turn a basic navigation system into a mobile friendly system:</p>
+				<p>Naver will automatically turn a basic navigation system into a mobile friendly system:</p>
 				
 				<pre><code class="language-javascript">$("nav").naver();</code></pre>
 				<pre><code class="language-markup">&lt;nav&gt;
-    &lt;a href="#"&gt;Home&lt;/a&gt;
-    &lt;a href="#"&gt;About&lt;/a&gt;
-    &lt;a href="#"&gt;Contact&lt;/a&gt;
+	&lt;a href="#"&gt;Home&lt;/a&gt;
+	&lt;a href="#"&gt;About&lt;/a&gt;
+	&lt;a href="#"&gt;Contact&lt;/a&gt;
 &lt;/nav&gt;</code></pre>
 				
 				<h5>Demo</h5>
-				<nav class="naver basic">
-				  <a href="#">Home</a>
-				  <a href="#">About</a>
-				  <a href="#">Contact</a>
+				<nav class="naver">
+					<a href="#">Home</a>
+					<a href="#">About</a>
+					<a href="#">Contact</a>
 				</nav>
 				
 				<br />
@@ -84,37 +84,41 @@
 				<!-- ANIMATED -->
 				<h2>Animated</h2>
 				<p>The navigation states can be also be animated. Note: This uses CSS transition which can be slow on some mobile devices.</p>
-				
+					
 				<pre><code class="language-javascript">$("nav").naver({
-    animated: true
+	animated: true
 });</code></pre>
 				
 				<h5>Demo</h5>
-				<nav class="naver animated">
-				  <a href="#">Home</a>
-				  <a href="#">About</a>
-				  <a href="#">Contact</a>
+				<nav class="naver animated" data-naver-options='{"animated":true}'>
+					<a href="#">Home</a>
+					<a href="#">About</a>
+					<a href="#">Contact</a>
 				</nav>
 				
 				<br />
 				
-				<!-- RESET -->
-				<h2>Reset</h2>
-				<p>Naver works by setting heights, so when transitioning between break points you may wish to reset the navigation state. You can also use a plugin like <a href="http://www.benplum.com/projects/rubberband/">Rubberband</a> to detect and act on break point changes instead of general resize events:</p>
+				<!-- BREAKPOINTS -->
+				<h2>Breakpoints</h2>
+				<p>The breakpoint when Naver enables and disables itself can also be customized:</p>
 				
-				<pre><code class="language-javascript">$("nav").naver();
-
-$(window).on("resize", function(e) {
-    $(".naver").trigger("close.naver");
+				<pre><code class="language-javascript">$("nav").naver({
+	maxWidth: "740px"
 });
 </code></pre>
 				
 				<h5>Demo</h5>
-				<nav class="naver basic reset">
-				  <a href="#">Home</a>
-				  <a href="#">About</a>
-				  <a href="#">Contact</a>
+				<nav class="naver reset" data-naver-options='{"maxWidth":"740px"}'>
+					<a href="#">Home</a>
+					<a href="#">About</a>
+					<a href="#">Contact</a>
 				</nav>
+				
+				<br />
+				
+				<!-- IE -->
+				<h2>IE Support</h2>
+				<p>When supporting IE you will need to include a <a href="https://gist.github.com/benplum/8045366" target="_blank">HTML5 enabler</a> and matchMedia polyfill (<a href="https://gist.github.com/benplum/8045336" target="_blank">IE 8</a>, <a href="https://gist.github.com/benplum/8045327" target="_blank">IE 9</a>).</p>
 				
 			</div>
 		</article>

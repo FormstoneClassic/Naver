@@ -1,32 +1,34 @@
 {
-	"name": "naver",
-	"title": "Naver",
-	"description": "A jQuery plugin for responsive navigation.",
-	"keywords": [
-		"responsive",
-		"mobile",
-		"navigation",
-		"menu",
-		"ui",
-		"formstone",
-		"benplum"
-	],
-	"version": "0.0.9",
-	"author": {
-		"name": "Ben Plum",
-		"url": "http://www.benplum.com"
-	},
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "http://www.opensource.org/licenses/mit-license.php"
-		}
-	],
-	"docs": "http://www.benplum.com/formstone/naver/",
-	"demo": "http://www.benplum.com/formstone/naver/",
-	"download": "https://github.com/benplum/Naver",
-	"bugs": "https://github.com/benplum/Naver/issues",
-	"dependencies": {
-		"jquery": ">=1.7"
-	}
+  "name": "naver",
+  "version": "0.1.0",
+  "title": "Naver",
+  "author": {
+    "name": "Ben Plum",
+    "email": "mr@benplum.com",
+    "url": "http://www.benplum.com"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
+  "description": "A jQuery plugin for responsive navigation. Part of the Formstone Library.",
+  "keywords": [
+    "responsive",
+    "mobile",
+    "navigation",
+    "menu",
+    "ui",
+    "formstone",
+    "benplum"
+  ],
+  "docs": "http://www.benplum.com/formstone/naver/",
+  "demo": "http://www.benplum.com/formstone/naver/",
+  "download": "https://github.com/benplum/Naver",
+  "bugs": "https://github.com/benplum/Naver/issues",
+  "homepage": "http://www.benplum.com/formstone/naver/"
 }
