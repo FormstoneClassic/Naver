@@ -8,14 +8,14 @@
 		
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet" type="text/css" media="all" />
 		<link href="http://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet" type="text/css">
-		<link href="http://www.benplum.com/css/demo.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all" />
 		
 		<!--[if LTE IE 8]>
-			<link href="http://www.benplum.com/css/demo.ie.css" rel="stylesheet" type="text/css" media="all" />
+			<link href="http://formstone.it/css/demo.ie.css" rel="stylesheet" type="text/css" media="all" />
 		<![endif]-->
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="http://www.benplum.com/js/demo.js"></script>
+		<script src="http://formstone.it/js/demo.js"></script>
 		
 		<!--[if LTE IE 9]>
 			<script src="ie/html5.js"></script>
@@ -49,24 +49,30 @@
 			});
 		</script>
 	</head>
+	
 	<body class="gridlock demo">
-		<header class="header">
+		<header id="header">
 			<div class="row">
-				<div class="mobile-full tablet-full desktop-8 desktop-push-2">
-					<h1>Naver Demo</h1>
-					<p>A jQuery plugin for responsive navigation. <a href="http://www.benplum.com/formstone/naver/" class="no-pronto">Learn More.</a></p>
+				<div class="all-full">
+					<a href="http://formstone.it/" class="branding">Formstone</a>
 				</div>
 			</div>
 		</header>
 		<article class="row page">
 			<div class="mobile-full tablet-full desktop-8 desktop-push-2">
+				<header class="header">
+					<h1>Naver Demo</h1>
+					<!-- <p>A technical demonstration of the jQuery plugin.</p> -->
+					<br />
+					<a href="http://formstone.it/naver/" class="button">View Documentation</a>
+				</header>
 				
 				<!-- BASIC -->
 				<h2>Basic</h2>
 				<p>Naver will automatically turn a basic navigation system into a mobile friendly system:</p>
 				
-				<pre><code class="language-javascript">$("nav").naver();</code></pre>
-				<pre><code class="language-markup">&lt;nav&gt;
+				<pre class="example"><code class="language-javascript">$("nav").naver();</code></pre>
+				<pre class="example"><code class="language-markup">&lt;nav&gt;
 	&lt;a href="#"&gt;Home&lt;/a&gt;
 	&lt;a href="#"&gt;About&lt;/a&gt;
 	&lt;a href="#"&gt;Contact&lt;/a&gt;
@@ -85,7 +91,7 @@
 				<h2>Animated</h2>
 				<p>The navigation states can be also be animated. Note: This uses CSS transition which can be slow on some mobile devices.</p>
 					
-				<pre><code class="language-javascript">$("nav").naver({
+				<pre class="example"><code class="language-javascript">$("nav").naver({
 	animated: true
 });</code></pre>
 				
@@ -102,7 +108,7 @@
 				<h2>Breakpoints</h2>
 				<p>The breakpoint when Naver enables and disables itself can also be customized:</p>
 				
-				<pre><code class="language-javascript">$("nav").naver({
+				<pre class="example"><code class="language-javascript">$("nav").naver({
 	maxWidth: "740px"
 });
 </code></pre>
