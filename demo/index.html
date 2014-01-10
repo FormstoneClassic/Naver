@@ -6,15 +6,12 @@
 		
 		<title>Naver Demo</title>
 		
-		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet" type="text/css" media="all" />
-		<link href="http://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet" type="text/css">
 		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all" />
 		
 		<!--[if LTE IE 8]>
 			<link href="http://formstone.it/css/demo.ie.css" rel="stylesheet" type="text/css" media="all" />
 		<![endif]-->
 		
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="http://formstone.it/js/demo.js"></script>
 		
 		<!--[if LTE IE 9]>
@@ -32,7 +29,7 @@
 		
 		<style>
 			.naver {  }
-			.naver a { background: #254960; color: #fff; display: block; float: left; font-size: 16px; line-height: 40px; margin: 0 1px 0 0; padding: 0 20px; }
+			.naver a { background: #444; color: #fff; display: block; float: left; font-size: 16px; line-height: 40px; margin: 0 1px 0 0; padding: 0 20px; }
 			.naver a:hover { background: #222; }
 			
 			.naver.enabled a { float: none; margin: 0 0 1px 0; width: 100%; }
@@ -88,6 +85,7 @@
 				<br />
 				
 				<!-- ANIMATED -->
+<!--
 				<h2>Animated</h2>
 				<p>The navigation states can be also be animated. Note: This uses CSS transition which can be slow on some mobile devices.</p>
 					
@@ -103,15 +101,15 @@
 				</nav>
 				
 				<br />
+-->
 				
-				<!-- BREAKPOINTS -->
-				<h2>Breakpoints</h2>
-				<p>The breakpoint when Naver enables and disables itself can also be customized:</p>
+				<!-- BREAKPOINT -->
+				<h2>Breakpoint</h2>
+				<p>By default, Naver will enable itself on screens smaller then 980 pixels wide. You can specify a different width by setting the <code>maxWidth</code> option on initialization.</p>
 				
 				<pre class="example"><code class="language-javascript">$("nav").naver({
 	maxWidth: "740px"
-});
-</code></pre>
+});</code></pre>
 				
 				<h5>Demo</h5>
 				<nav class="naver reset" data-naver-options='{"maxWidth":"740px"}'>
@@ -128,5 +126,11 @@
 				
 			</div>
 		</article>
+		
+		<footer id="footer" class="row">
+			<div class="all-full copyright">
+				Made with &hearts; in Hampden
+			</div>
+		</footer>
 	</body>
 </html>
