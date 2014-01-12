@@ -3,17 +3,17 @@
 	<head>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-		
+
 		<title>Naver Demo</title>
-		
+
 		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all" />
-		
+
 		<!--[if LTE IE 8]>
 			<link href="http://formstone.it/css/demo.ie.css" rel="stylesheet" type="text/css" media="all" />
 		<![endif]-->
-		
+
 		<script src="http://formstone.it/js/demo.js"></script>
-		
+
 		<!--[if LTE IE 9]>
 			<script src="ie/html5.js"></script>
 		<![endif]-->
@@ -23,30 +23,29 @@
 		<!--[if LTE IE 8]>
 			<script src="ie/matchMedia.ie8.js"></script>
 		<![endif]-->
-		
+
 		<link href="../jquery.fs.naver.css" rel="stylesheet" type="text/css" media="all" />
 		<script src="../jquery.fs.naver.js"></script>
-		
+
 		<style>
-			.naver {  }
 			.naver a { background: #444; color: #fff; display: block; float: left; font-size: 16px; line-height: 40px; margin: 0 1px 0 0; padding: 0 20px; }
 			.naver a:hover { background: #222; }
-			
+
 			.naver.enabled a { float: none; margin: 0 0 1px 0; width: 100%; }
 		</style>
-		
+
 		<script>
 			$(document).ready(function() {
 				$(".naver a").on("click", function(e) {
 					e.preventDefault();
 					e.stopPropagation();
-				});	
-				
+				});
+
 				$(".naver").naver();
 			});
 		</script>
 	</head>
-	
+
 	<body class="gridlock demo">
 		<header id="header">
 			<div class="row">
@@ -63,70 +62,70 @@
 					<br />
 					<a href="http://formstone.it/naver/" class="button">View Documentation</a>
 				</header>
-				
+
 				<!-- BASIC -->
 				<h2>Basic</h2>
 				<p>Naver will automatically turn a basic navigation system into a mobile friendly system:</p>
-				
+
 				<pre class="example"><code class="language-javascript">$("nav").naver();</code></pre>
 				<pre class="example"><code class="language-markup">&lt;nav&gt;
 	&lt;a href="#"&gt;Home&lt;/a&gt;
 	&lt;a href="#"&gt;About&lt;/a&gt;
 	&lt;a href="#"&gt;Contact&lt;/a&gt;
 &lt;/nav&gt;</code></pre>
-				
+
 				<h5>Demo</h5>
 				<nav class="naver">
 					<a href="#">Home</a>
 					<a href="#">About</a>
 					<a href="#">Contact</a>
 				</nav>
-				
+
 				<br />
-				
+
 				<!-- ANIMATED -->
 <!--
 				<h2>Animated</h2>
 				<p>The navigation states can be also be animated. Note: This uses CSS transition which can be slow on some mobile devices.</p>
-					
+
 				<pre class="example"><code class="language-javascript">$("nav").naver({
 	animated: true
 });</code></pre>
-				
+
 				<h5>Demo</h5>
 				<nav class="naver animated" data-naver-options='{"animated":true}'>
 					<a href="#">Home</a>
 					<a href="#">About</a>
 					<a href="#">Contact</a>
 				</nav>
-				
+
 				<br />
 -->
-				
+
 				<!-- BREAKPOINT -->
 				<h2>Breakpoint</h2>
 				<p>By default, Naver will enable itself on screens smaller then 980 pixels wide. You can specify a different width by setting the <code>maxWidth</code> option on initialization.</p>
-				
+
 				<pre class="example"><code class="language-javascript">$("nav").naver({
 	maxWidth: "740px"
 });</code></pre>
-				
+
 				<h5>Demo</h5>
 				<nav class="naver reset" data-naver-options='{"maxWidth":"740px"}'>
 					<a href="#">Home</a>
 					<a href="#">About</a>
 					<a href="#">Contact</a>
 				</nav>
-				
+
 				<br />
-				
+
 				<!-- IE -->
 				<h2>IE Support</h2>
 				<p>When supporting IE you will need to include a <a href="https://gist.github.com/benplum/8045366" target="_blank">HTML5 enabler</a> and matchMedia polyfill (<a href="https://gist.github.com/benplum/8045336" target="_blank">IE 8</a>, <a href="https://gist.github.com/benplum/8045327" target="_blank">IE 9</a>).</p>
-				
+
 			</div>
 		</article>
-		
+
 		<footer id="footer" class="row">
 			<div class="all-full copyright">
 				Made with &hearts; in Hampden

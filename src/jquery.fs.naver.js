@@ -1,6 +1,6 @@
 ;(function ($, window) {
 	"use strict";
-	
+
 	/**
 	 * @options
 	 * @param customClass [string] <''> "Class applied to instance"
@@ -8,9 +8,9 @@
 	 * @param labels.closed [string] <'Navigation'> "Closed state text"
 	 * @param labels.open [string] <'Close'> "Open state text"
 	 * @param maxWidth [string] <'980px'> "Width at which to auto-disable plugin"
-	 */ 
+	 */
 	var options = {
-		customClass: false,
+		customClass: "",
 		label: true,
 		labels: {
 			closed: "Navigation",
@@ -18,17 +18,17 @@
 		},
 		maxWidth: "980px"
 	};
-	
+
 	/**
 	 * @events
 	 * @event open.naver "Navigation opened"
 	 * @event close.naver "Navigation closed"
 	 */
-	
+
 	var pub = {
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name close
 		 * @description Closes instance
 		 * @example $(".target").naver("close");
@@ -36,20 +36,22 @@
 		close: function(e) {
 			return $(this).each(function() {
 				var data = $(this).data("naver");
-				
-				data.$wrapper.css({ 
-					height: 0 
-				});
-				if (data.label) {
-					data.$handle.html(data.labels.closed);
+
+				if (data !== null) {
+					data.$wrapper.css({
+						height: 0
+					});
+					if (data.label) {
+						data.$handle.html(data.labels.closed);
+					}
+					data.$nav.removeClass("open")
+							 .trigger("close.naver");
 				}
-				data.$nav.removeClass("open")
-						 .trigger("close.naver");
 			});
 		},
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name defaults
 		 * @description Sets default plugin options
 		 * @param opts [object] <{}> "Options object"
@@ -59,25 +61,26 @@
 			options = $.extend(options, opts || {});
 			return $(this);
 		},
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name disable
 		 * @description Disables instance
 		 * @example $(".target").naver("disable");
 		 */
 		disable: function() {
-			var $targets = $(this);
-			
-			$targets.removeClass("enabled")
-					.addClass("disabled");
-			pub.close.apply($targets);
-			
-			return $targets;
+			return $(this).each(function() {
+				var data = $(this).data("naver");
+
+				if (data !== null) {
+					data.$nav.removeClass("enabled");
+					data.$wrapper.css({ height: "" });
+				}
+			});
 		},
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name destroy
 		 * @description Destroys instance
 		 * @example $(".target").naver("destroy");
@@ -85,36 +88,39 @@
 		destroy: function() {
 			return $(this).each(function() {
 				var data = $(this).data("naver");
-				
-				data.$handle.remove();
-				data.$container.contents()
-							   .unwrap()
-							   .unwrap();
-				
-				data.$nav.removeClass("enabled disabled naver" + data.customClass)
-						 .off(".naver")
-						 .removeData("naver");
+
+				if (data !== null) {
+					data.$handle.remove();
+					data.$container.contents()
+								   .unwrap()
+								   .unwrap();
+
+					data.$nav.removeClass("enabled disabled naver " + data.customClass)
+							 .off(".naver")
+							 .removeData("naver");
+				}
 			});
 		},
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name enable
 		 * @description Enables instance
 		 * @example $(".target").naver("enable");
 		 */
 		enable: function() {
-			var $targets = $(this);
-			
-			$targets.removeClass("disabled")
-					.addClass("enabled");
-			pub.close.apply($targets);
-			
-			return $targets;
+			return $(this).each(function() {
+				var data = $(this).data("naver");
+
+				if (data !== null) {
+					data.$nav.addClass("enabled");
+					pub.close.apply(data.$nav);
+				}
+			});
 		},
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name open
 		 * @description Opens instance
 		 * @example $(".target").naver("open");
@@ -122,19 +128,21 @@
 		open: function() {
 			return $(this).each(function() {
 				var data = $(this).data("naver");
-				
-				data.$wrapper.css({ 
-					height: data.$container.outerHeight(true) 
-				});
-				if (data.label) {
-					data.$handle.html(data.labels.open);
+
+				if (data !== null) {
+					data.$wrapper.css({
+						height: data.$container.outerHeight(true)
+					});
+					if (data.label) {
+						data.$handle.html(data.labels.open);
+					}
+					data.$nav.addClass("open")
+							 .trigger("open.naver");
 				}
-				data.$nav.addClass("open")
-						 .trigger("open.naver");
 			});
 		}
 	};
-	
+
 	/**
 	 * @method private
 	 * @name _init
@@ -144,7 +152,7 @@
 	function _init(opts) {
 		// Settings
 		opts = $.extend({}, options, opts);
-		
+
 		// Apply to each element
 		var $items = $(this);
 		for (var i = 0, count = $items.length; i < count; i++) {
@@ -152,7 +160,7 @@
 		}
 		return $items;
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _build
@@ -164,22 +172,22 @@
 		if (!$nav.data("naver")) {
 			// Extend Options
 			opts = $.extend({}, opts, $nav.data("naver-options"));
-			
+
 			$nav.addClass("naver " + opts.customClass)
 				.wrapInner('<div class="naver-container" />')
 				.wrapInner('<div class="naver-wrapper" />')
 				.prepend('<span class="naver-handle">' + ((opts.label) ? opts.labels.closed : '') + '</span>');
-			
+
 			var data = $.extend({
 				$nav: $nav,
 				$container: $nav.find(".naver-container"),
 				$wrapper: $nav.find(".naver-wrapper"),
 				$handle: $nav.find(".naver-handle")
 			}, opts);
-			
+
 			data.$nav.on("touchstart.naver mousedown.naver", ".naver-handle", data, _onClick)
 			    .data("naver", data);
-			
+
 			// Navtive MQ Support
 			if (window.matchMedia !== undefined) {
 				data.mediaQuery = window.matchMedia("(max-width:" + (data.maxWidth === Infinity ? "100000px" : data.maxWidth) + ")");
@@ -191,7 +199,7 @@
 			}
 		}
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _onClick
@@ -201,21 +209,21 @@
 	function _onClick(e) {
 		e.preventDefault();
 		e.stopPropagation();
-		
+
 		var $target = $(e.currentTarget),
 			data = e.data;
-		
+
 		// Close other open instances
 		$(".naver").not(data.$nav)
 				   .naver("close");
-		
+
 		if (data.$nav.hasClass("open")) {
 			pub.close.apply(data.$nav);
 		} else {
 			pub.open.apply(data.$nav);
 		}
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _onRespond
@@ -223,14 +231,14 @@
 	 */
 	function _onRespond() {
 		var data = $(this).data("naver");
-		
+
 		if (data.mediaQuery.matches) {
 			pub.enable.apply(data.$nav);
 		} else {
 			pub.disable.apply(data.$nav);
 		}
 	}
-	
+
 	$.fn.naver = function(method) {
 		if (pub[method]) {
 			return pub[method].apply(this, Array.prototype.slice.call(arguments, 1));
