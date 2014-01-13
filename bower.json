@@ -1,6 +1,6 @@
 {
   "name": "Naver",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A jQuery plugin for responsive navigation. Part of the Formstone Library.",
   "author": {
     "name": "Ben Plum",
@@ -14,7 +14,8 @@
     "jquery.fs.naver.css"
   ],
   "ignore": [
-    "*.json",
-    "Gruntfile.js"
+    "*.jquery.json",
+    "Gruntfile.js",
+    "src/"
   ]
 }
