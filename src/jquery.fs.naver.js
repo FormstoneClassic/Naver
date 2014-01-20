@@ -58,7 +58,7 @@
 		 * @example $.naver("defaults", opts);
 		 */
 		defaults: function(opts) {
-			options = $.extend(options, opts || {});
+			options = $.extend(true, options, opts || {});
 			return $(this);
 		},
 
@@ -151,7 +151,7 @@
 	 */
 	function _init(opts) {
 		// Settings
-		opts = $.extend({}, options, opts);
+		opts = $.extend(true, {}, options, opts);
 
 		// Apply to each element
 		var $items = $(this);
@@ -171,14 +171,14 @@
 	function _build($nav, opts) {
 		if (!$nav.data("naver")) {
 			// Extend Options
-			opts = $.extend({}, opts, $nav.data("naver-options"));
+			opts = $.extend(true, {}, opts, $nav.data("naver-options"));
 
 			$nav.addClass("naver " + opts.customClass)
 				.wrapInner('<div class="naver-container" />')
 				.wrapInner('<div class="naver-wrapper" />')
 				.prepend('<span class="naver-handle">' + ((opts.label) ? opts.labels.closed : '') + '</span>');
 
-			var data = $.extend({
+			var data = $.extend(true, {
 				$nav: $nav,
 				$container: $nav.find(".naver-container"),
 				$wrapper: $nav.find(".naver-wrapper"),
