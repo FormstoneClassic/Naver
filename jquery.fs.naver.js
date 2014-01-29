@@ -1,5 +1,5 @@
 /* 
- * Naver v3.0.3 - 2014-01-20 
+ * Naver v3.0.4 - 2014-01-29 
  * A jQuery plugin for responsive navigation. Part of the Formstone Library. 
  * http://formstone.it/naver/ 
  * 
@@ -42,8 +42,8 @@
 		 * @example $(".target").naver("close");
 		 */
 		close: function(e) {
-			return $(this).each(function() {
-				var data = $(this).data("naver");
+			return $(this).each(function(i, nav) {
+				var data = $(nav).data("naver");
 
 				if (data !== null) {
 					data.$wrapper.css({
@@ -77,8 +77,8 @@
 		 * @example $(".target").naver("disable");
 		 */
 		disable: function() {
-			return $(this).each(function() {
-				var data = $(this).data("naver");
+			return $(this).each(function(i, nav) {
+				var data = $(nav).data("naver");
 
 				if (data !== null) {
 					data.$nav.removeClass("enabled");
@@ -94,8 +94,8 @@
 		 * @example $(".target").naver("destroy");
 		 */
 		destroy: function() {
-			return $(this).each(function() {
-				var data = $(this).data("naver");
+			return $(this).each(function(i, nav) {
+				var data = $(nav).data("naver");
 
 				if (data !== null) {
 					data.$handle.remove();
@@ -117,8 +117,8 @@
 		 * @example $(".target").naver("enable");
 		 */
 		enable: function() {
-			return $(this).each(function() {
-				var data = $(this).data("naver");
+			return $(this).each(function(i, nav) {
+				var data = $(nav).data("naver");
 
 				if (data !== null) {
 					data.$nav.addClass("enabled");
@@ -134,8 +134,8 @@
 		 * @example $(".target").naver("open");
 		 */
 		open: function() {
-			return $(this).each(function() {
-				var data = $(this).data("naver");
+			return $(this).each(function(i, nav) {
+				var data = $(nav).data("naver");
 
 				if (data !== null) {
 					data.$wrapper.css({
