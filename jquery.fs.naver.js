@@ -1,5 +1,5 @@
 /* 
- * Naver v3.0.4 - 2014-01-29 
+ * Naver v3.0.5 - 2014-01-31 
  * A jQuery plugin for responsive navigation. Part of the Formstone Library. 
  * http://formstone.it/naver/ 
  * 
@@ -181,10 +181,12 @@
 			// Extend Options
 			opts = $.extend(true, {}, opts, $nav.data("naver-options"));
 
+			var $handle = $nav.find(".naver-handle").length ? $nav.find(".naver-handle").detach() : $('<span class="naver-handle"></span>');
+
 			$nav.addClass("naver " + opts.customClass)
-				.wrapInner('<div class="naver-container" />')
-				.wrapInner('<div class="naver-wrapper" />')
-				.prepend('<span class="naver-handle">' + ((opts.label) ? opts.labels.closed : '') + '</span>');
+				.wrapInner('<div class="naver-container"></div>')
+				.wrapInner('<div class="naver-wrapper"></div>')
+				.prepend($handle);
 
 			var data = $.extend(true, {
 				$nav: $nav,
@@ -193,6 +195,7 @@
 				$handle: $nav.find(".naver-handle")
 			}, opts);
 
+			data.$handle.text((opts.label) ? opts.labels.closed : '');
 			data.$nav.on("touchstart.naver mousedown.naver", ".naver-handle", data, _onClick)
 			    .data("naver", data);
 
