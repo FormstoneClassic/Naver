@@ -1,5 +1,5 @@
 /* 
- * Naver v3.0.5 - 2014-01-31 
+ * Naver v3.0.6 - 2014-02-06 
  * A jQuery plugin for responsive navigation. Part of the Formstone Library. 
  * http://formstone.it/naver/ 
  * 
@@ -45,7 +45,7 @@
 			return $(this).each(function(i, nav) {
 				var data = $(nav).data("naver");
 
-				if (data !== null) {
+				if (data) {
 					data.$wrapper.css({
 						height: 0
 					});
@@ -80,7 +80,7 @@
 			return $(this).each(function(i, nav) {
 				var data = $(nav).data("naver");
 
-				if (data !== null) {
+				if (data) {
 					data.$nav.removeClass("enabled");
 					data.$wrapper.css({ height: "" });
 				}
@@ -97,7 +97,7 @@
 			return $(this).each(function(i, nav) {
 				var data = $(nav).data("naver");
 
-				if (data !== null) {
+				if (data) {
 					data.$handle.remove();
 					data.$container.contents()
 								   .unwrap()
@@ -120,7 +120,7 @@
 			return $(this).each(function(i, nav) {
 				var data = $(nav).data("naver");
 
-				if (data !== null) {
+				if (data) {
 					data.$nav.addClass("enabled");
 					pub.close.apply(data.$nav);
 				}
@@ -137,7 +137,7 @@
 			return $(this).each(function(i, nav) {
 				var data = $(nav).data("naver");
 
-				if (data !== null) {
+				if (data) {
 					data.$wrapper.css({
 						height: data.$container.outerHeight(true)
 					});
