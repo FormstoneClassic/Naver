@@ -37,7 +37,7 @@
 			return $(this).each(function(i, nav) {
 				var data = $(nav).data("naver");
 
-				if (data) {
+				if (data && data.$nav.hasClass("enabled")) {
 					data.$wrapper.css({
 						height: 0
 					});
@@ -129,7 +129,7 @@
 			return $(this).each(function(i, nav) {
 				var data = $(nav).data("naver");
 
-				if (data) {
+				if (data && data.$nav.hasClass("enabled")) {
 					data.$wrapper.css({
 						height: data.$container.outerHeight(true)
 					});
