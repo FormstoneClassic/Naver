@@ -1,5 +1,5 @@
 /* 
- * Naver v3.0.7 - 2014-03-04 
+ * Naver v3.0.8 - 2014-05-06 
  * A jQuery plugin for responsive navigation. Part of the Formstone Library. 
  * http://formstone.it/naver/ 
  * 
@@ -196,8 +196,10 @@
 			}, opts);
 
 			data.$handle.text((opts.label) ? opts.labels.closed : '');
-			data.$nav.on("touchstart.naver mousedown.naver", ".naver-handle", data, _onClick)
-			    .data("naver", data);
+			data.$nav.on("touchstart.naver", ".naver-handle", data, _onTouchStart)
+					 .on("click.naver", ".naver-handle", data, _onClick)
+					 .data("naver", data);
+
 
 			// Navtive MQ Support
 			if (window.matchMedia !== undefined) {
@@ -209,6 +211,64 @@
 				_onRespond.apply(data.$nav);
 			}
 		}
+	}
+
+	/**
+	 * @method private
+	 * @name _onTouchStart
+	 * @description Handles touchstart to selected item
+	 * @param e [object] "Event data"
+	 */
+	function _onTouchStart(e) {
+		e.stopPropagation();
+
+		var data = e.data,
+			oe = e.originalEvent;
+
+		_clearTimer(data.timer);
+
+		data.touchStartX = oe.touches[0].clientX;
+		data.touchStartY = oe.touches[0].clientY;
+
+		data.$nav.on("touchmove.naver", ".naver-handle", data, _onTouchMove)
+				 .on("touchend.naver", ".naver-handle", data, _onTouchEnd);
+	}
+
+	/**
+	 * @method private
+	 * @name _onTouchMove
+	 * @description Handles touchmove to selected item
+	 * @param e [object] "Event data"
+	 */
+	function _onTouchMove(e) {
+		var data = e.data,
+			oe = e.originalEvent;
+
+		if (Math.abs(oe.touches[0].clientX - data.touchStartX) > 10 || Math.abs(oe.touches[0].clientY - data.touchStartY) > 10) {
+			data.$nav.off("touchmove.naver touchend.naver");
+		}
+	}
+
+	/**
+	 * @method private
+	 * @name _onTouchEnd
+	 * @description Handles touchend to selected item
+	 * @param e [object] "Event data"
+	 */
+	function _onTouchEnd(e) {
+		e.preventDefault();
+		e.stopPropagation();
+
+		var data = e.data;
+
+		data.$nav.off("touchmove.naver touchend.naver click.naver");
+
+		// prevent ghosty clicks
+		data.timer = _startTimer(data.timer, 1000, function() {
+			data.$nav.on("click.naver", ".naver-handle", data, _onClick);
+		});
+
+		_onClick(e);
 	}
 
 	/**
@@ -247,6 +307,37 @@
 			pub.enable.apply(data.$nav);
 		} else {
 			pub.disable.apply(data.$nav);
+		}
+	}
+
+	/**
+	 * @method private
+	 * @name _startTimer
+	 * @description Starts an internal timer
+	 * @param timer [int] "Timer ID"
+	 * @param time [int] "Time until execution"
+	 * @param callback [int] "Function to execute"
+	 * @param interval [boolean] "Flag for recurring interval"
+	 */
+	function _startTimer(timer, time, func, interval) {
+		_clearTimer(timer, interval);
+		if (interval === true) {
+			return setInterval(func, time);
+		} else {
+			return setTimeout(func, time);
+		}
+	}
+
+	/**
+	 * @method private
+	 * @name _clearTimer
+	 * @description Clears an internal timer
+	 * @param timer [int] "Timer ID"
+	 */
+	function _clearTimer(timer) {
+		if (timer !== null) {
+			clearInterval(timer);
+			timer = null;
 		}
 	}
 

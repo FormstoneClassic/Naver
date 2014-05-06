@@ -2,7 +2,7 @@
   "name": "Naver",
   "id": "naver",
   "codename": "jquery.fs.naver",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "description": "A jQuery plugin for responsive navigation. Part of the Formstone Library.",
   "keywords": [
   	"responsive",
