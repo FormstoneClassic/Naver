@@ -1,5 +1,5 @@
 /* 
- * Naver v3.0.8 - 2014-05-06 
+ * Naver v3.0.9 - 2014-09-01 
  * A jQuery plugin for responsive navigation. Part of the Formstone Library. 
  * http://formstone.it/naver/ 
  * 
@@ -10,7 +10,6 @@
 	 	-webkit-user-select: none;
 		   -moz-user-select: none;
 		    -ms-user-select: none;
-		     -o-user-select: none;
 			    user-select: none;
  	}
  	.naver .naver-handle:before { background: url(jquery.fs.naver-icon.png) no-repeat center; content: ''; display: block; float: left; height: 15px; margin: 7px 10px 0 0; width: 20px; }

@@ -1,5 +1,5 @@
 /* 
- * Naver v3.0.8 - 2014-05-06 
+ * Naver v3.0.9 - 2014-09-01 
  * A jQuery plugin for responsive navigation. Part of the Formstone Library. 
  * http://formstone.it/naver/ 
  * 

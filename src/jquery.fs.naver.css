@@ -2,7 +2,6 @@
 	 	-webkit-user-select: none;
 		   -moz-user-select: none;
 		    -ms-user-select: none;
-		     -o-user-select: none;
 			    user-select: none;
  	}
  	.naver .naver-handle:before { background: url(jquery.fs.naver-icon.png) no-repeat center; content: ''; display: block; float: left; height: 15px; margin: 7px 10px 0 0; width: 20px; }
