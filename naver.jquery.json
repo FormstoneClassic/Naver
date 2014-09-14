@@ -1,6 +1,6 @@
 {
   "name": "naver",
-  "version": "3.0.9",
+  "version": "3.0.10",
   "title": "Naver",
   "author": {
     "name": "Ben Plum",
@@ -25,12 +25,11 @@
     "ui",
     "javascript",
     "jquery",
-    "formstone",
-    "benplum"
+    "formstone"
   ],
   "docs": "http://formstone.it/naver/",
   "demo": "http://formstone.it/naver/",
-  "download": "https://github.com/benplum/Naver",
-  "bugs": "https://github.com/benplum/Naver/issues",
+  "download": "https://github.com/Formstone/Naver",
+  "bugs": "https://github.com/Formstone/Naver/issues",
   "homepage": "http://formstone.it/naver/"
 }

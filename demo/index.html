@@ -2,14 +2,14 @@
 <html lang="en">
 	<head>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 
 		<title>Naver Demo</title>
 
-		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all">
 
 		<!--[if LTE IE 8]>
-			<link href="http://formstone.it/css/demo.ie.css" rel="stylesheet" type="text/css" media="all" />
+			<link href="http://formstone.it/css/demo.ie.css" rel="stylesheet" type="text/css" media="all">
 		<![endif]-->
 
 		<script src="http://formstone.it/js/demo.js"></script>
@@ -24,26 +24,36 @@
 			<script src="ie/matchMedia.ie8.js"></script>
 		<![endif]-->
 
-		<link href="../jquery.fs.naver.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="../jquery.fs.naver.css" rel="stylesheet" type="text/css" media="all">
 		<script src="../jquery.fs.naver.js"></script>
 
-		<style>
-			.naver a { background: #444; color: #fff; display: block; float: left; font-size: 16px; line-height: 40px; margin: 0 1px 0 0; padding: 0 20px; }
-			.naver a:hover { background: #222; }
+		<!--[DEMO:START-RESOURCES]-->
 
-			.naver.enabled a { float: none; margin: 0 0 1px 0; width: 100%; }
+		<style>
+			.demo .naver a { background: #444; color: #fff; display: block; float: left; font-size: 16px; line-height: 40px; margin: 0 1px 0 0; padding: 0 20px; }
+			.demo .naver a:hover { background: #222; }
+
+			.demo .naver.enabled a { float: none; margin: 0 0 1px 0; width: 100%; }
 		</style>
 
 		<script>
 			$(document).ready(function() {
-				$(".naver a").on("click", function(e) {
+				$(".demo .naver a").on("click", function(e) {
 					e.preventDefault();
 					e.stopPropagation();
 				});
 
-				$(".naver").naver();
+				$(".demo .naver").naver();
+
+				$(window).one("pronto.load", function() {
+					$(".demo .naver a").off(".click");
+					$(".demo .naver").naver("destroy");
+				});
 			});
 		</script>
+
+		<!--[DEMO:END-RESOURCES]-->
+
 	</head>
 
 	<body class="gridlock demo">
@@ -58,10 +68,11 @@
 			<div class="mobile-full tablet-full desktop-8 desktop-push-2">
 				<header class="header">
 					<h1>Naver Demo</h1>
-					<!-- <p>A technical demonstration of the jQuery plugin.</p> -->
-					<br />
+					<br>
 					<a href="http://formstone.it/naver/" class="button">View Documentation</a>
 				</header>
+
+				<!--[DEMO:START-CONTENT]-->
 
 				<!-- BASIC -->
 				<h2>Basic</h2>
@@ -81,26 +92,7 @@
 					<a href="#">Contact</a>
 				</nav>
 
-				<br />
-
-				<!-- ANIMATED -->
-<!--
-				<h2>Animated</h2>
-				<p>The navigation states can be also be animated. Note: This uses CSS transition which can be slow on some mobile devices.</p>
-
-				<pre class="example"><code class="language-javascript">$("nav").naver({
-	animated: true
-});</code></pre>
-
-				<h5>Demo</h5>
-				<nav class="naver animated" data-naver-options='{"animated":true}'>
-					<a href="#">Home</a>
-					<a href="#">About</a>
-					<a href="#">Contact</a>
-				</nav>
-
-				<br />
--->
+				<br>
 
 				<!-- BREAKPOINT -->
 				<h2>Breakpoint</h2>
@@ -118,11 +110,13 @@
 					<a href="#">Contact</a>
 				</nav>
 
-				<br />
+				<br>
 
 				<!-- IE -->
 				<h2>IE Support</h2>
 				<p>When supporting IE you will need to include a <a href="https://gist.github.com/benplum/8045366" target="_blank">HTML5 enabler</a> and matchMedia polyfill (<a href="https://gist.github.com/benplum/8045336" target="_blank">IE 8</a>, <a href="https://gist.github.com/benplum/8045327" target="_blank">IE 9</a>).</p>
+
+				<!--[DEMO:END-CONTENT]-->
 
 			</div>
 		</article>
