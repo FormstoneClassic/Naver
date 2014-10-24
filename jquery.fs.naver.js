@@ -1,5 +1,5 @@
 /* 
- * Naver v3.1.1 - 2014-10-24 
+ * Naver v3.1.2 - 2014-10-24 
  * A jQuery plugin for responsive navigation. Part of the Formstone Library. 
  * http://formstone.it/naver/ 
  * 
@@ -222,13 +222,12 @@
 	function _onTouchStart(e) {
 		e.stopPropagation();
 
-		var data = e.data,
-			oe = e.originalEvent;
+		var data = e.data;
 
-		_clearTimer(data.timer);
+		data.touchStartEvent = e.originalEvent;
 
-		data.touchStartX = oe.touches[0].clientX;
-		data.touchStartY = oe.touches[0].clientY;
+		data.touchStartX = data.touchStartEvent.touches[0].clientX;
+		data.touchStartY = data.touchStartEvent.touches[0].clientY;
 
 		data.$nav.on("touchmove.naver", ".naver-handle", data, _onTouchMove)
 				 .on("touchend.naver", ".naver-handle", data, _onTouchEnd);
@@ -261,12 +260,9 @@
 
 		var data = e.data;
 
-		data.$nav.off("touchmove.naver touchend.naver click.naver");
+		data.touchStartEvent.preventDefault();
 
-		// prevent ghosty clicks
-		data.timer = _startTimer(data.timer, 1000, function() {
-			data.$nav.on("click.naver", ".naver-handle", data, _onClick);
-		});
+		data.$nav.off("touchmove.naver touchend.naver click.naver");
 
 		_onClick(e);
 	}
@@ -307,37 +303,6 @@
 			pub.enable.apply(data.$nav);
 		} else {
 			pub.disable.apply(data.$nav);
-		}
-	}
-
-	/**
-	 * @method private
-	 * @name _startTimer
-	 * @description Starts an internal timer
-	 * @param timer [int] "Timer ID"
-	 * @param time [int] "Time until execution"
-	 * @param callback [int] "Function to execute"
-	 * @param interval [boolean] "Flag for recurring interval"
-	 */
-	function _startTimer(timer, time, func, interval) {
-		_clearTimer(timer, interval);
-		if (interval === true) {
-			return setInterval(func, time);
-		} else {
-			return setTimeout(func, time);
-		}
-	}
-
-	/**
-	 * @method private
-	 * @name _clearTimer
-	 * @description Clears an internal timer
-	 * @param timer [int] "Timer ID"
-	 */
-	function _clearTimer(timer) {
-		if (timer !== null) {
-			clearInterval(timer);
-			timer = null;
 		}
 	}
 
