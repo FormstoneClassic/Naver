@@ -14,8 +14,6 @@
     "jquery.fs.naver.css"
   ],
   "ignore": [
-    "*.jquery.json",
-    "Gruntfile.js",
-    "src/"
+    "*.jquery.json"
   ]
 }
