@@ -7,4 +7,4 @@ A jQuery plugin for responsive navigation. Part of the Formstone Library.
 - [Documentation](http://formstone.it/naver/) 
 
 #### Bower Support 
-`bower install Naver`
+`bower install Naver` 

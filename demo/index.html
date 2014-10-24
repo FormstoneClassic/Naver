@@ -33,6 +33,7 @@
 			.demo .naver a:hover { background: #222; }
 
 			.demo .naver.enabled a { float: none; margin: 0 0 1px 0; width: 100%; }
+			.demo .naver.enabled .naver-container { padding: 10px; }
 		</style>
 
 		<script>
@@ -75,7 +76,7 @@
 
 				<!-- BASIC -->
 				<h2>Basic</h2>
-				<p>Naver will automatically turn a basic navigation system into a mobile friendly system:</p>
+				<p>Naver will automatically turn a basic navigation system into a mobile friendly system. Feel free to style your links anyway you'd like:</p>
 
 				<pre class="example"><code class="language-javascript">$("nav").naver();</code></pre>
 				<pre class="example"><code class="language-markup">&lt;nav&gt;
@@ -102,7 +103,7 @@
 });</code></pre>
 
 				<h5>Demo</h5>
-				<nav class="naver reset" data-naver-options='{"maxWidth":"740px"}'>
+				<nav class="naver custom-naver reset" data-naver-options='{"maxWidth":"740px"}'>
 					<h4 class="naver-handle">Navigation</h4>
 					<a href="#">Home</a>
 					<a href="#">About</a>
