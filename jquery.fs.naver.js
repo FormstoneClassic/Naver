@@ -1,5 +1,5 @@
 /* 
- * Naver v3.1.2 - 2014-10-24 
+ * Naver v3.1.2 - 2014-11-25 
  * A jQuery plugin for responsive navigation. Part of the Formstone Library. 
  * http://formstone.it/naver/ 
  * 
@@ -67,7 +67,7 @@
 		 */
 		defaults: function(opts) {
 			options = $.extend(true, options, opts || {});
-			return $(this);
+			return (typeof this === 'object') ? $(this) : true;
 		},
 
 		/**
