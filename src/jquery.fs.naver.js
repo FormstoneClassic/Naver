@@ -59,7 +59,7 @@
 		 */
 		defaults: function(opts) {
 			options = $.extend(true, options, opts || {});
-			return $(this);
+			return (typeof this === 'object') ? $(this) : true;
 		},
 
 		/**
