@@ -85,7 +85,10 @@ module.exports = function(grunt) {
 		less: {
 			main: {
 				files: {
-					'<%= pkg.codename %>.css': 'src/<%= pkg.codename %>.less'
+					'<%= pkg.codename %>.css': [
+						'src/<%= pkg.codename %>-config.less',
+						'src/<%= pkg.codename %>.less'
+					]
 				}
 			},
 			min: {
@@ -94,14 +97,17 @@ module.exports = function(grunt) {
 					cleancss: true
 				},
 				files: {
-					'<%= pkg.codename %>.min.css': 'src/<%= pkg.codename %>.less'
+					'<%= pkg.codename %>.min.css': [
+						'src/<%= pkg.codename %>-config.less',
+						'src/<%= pkg.codename %>.less'
+					]
 				}
 			}
 		},
 		// Auto Prefixer
 		autoprefixer: {
 			options: {
-				borwsers: [ '> 1%', 'last 5 versions', 'Firefox ESR', 'Opera 12.1', '>= ie 8' ]
+				browsers: [ '> 1%', 'last 5 versions', 'Firefox ESR', 'Opera 12.1', 'IE 8', 'IE 9' ]
 			},
 			no_dest: {
 				 src: '*.css'
@@ -122,7 +128,7 @@ module.exports = function(grunt) {
 				]
 			}
 		},
-		//Bower sync
+		// Bower sync
 		sync: {
 			all: {
 				options: {
@@ -136,10 +142,32 @@ module.exports = function(grunt) {
 					}
 				}
 			}
+		},
+		// Watcher - For dev only!!
+		watch: {
+			scripts: {
+				files: [
+					'src/**.js'
+				],
+				tasks: [
+					'jshint',
+					'copy'
+				]
+			},
+			styles: {
+				files: [
+					'src/**.less'
+				],
+				tasks: [
+					'less',
+					'autoprefixer'
+				]
+			}
 		}
 	});
 
 	// Load tasks
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
