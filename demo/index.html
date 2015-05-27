@@ -46,7 +46,7 @@
 				$(".demo .naver").naver();
 
 				$(window).one("pronto.load", function() {
-					$(".demo .naver a").off(".click");
+					$(".demo .naver a").off("click");
 					$(".demo .naver").naver("destroy");
 				});
 			});
